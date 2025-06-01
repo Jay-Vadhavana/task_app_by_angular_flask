@@ -1,0 +1,83 @@
+.task-list-item-container {
+  overflow: auto;
+  width: 100%;
+  height: 100vh;
+}
+
+table{
+  border-spacing: 0;
+  border-collapse: separate;
+  min-width: 100%;
+  width: max-content;
+}
+
+table th{
+  font-weight: 600;
+  color: 	#590d22;
+}
+
+td, th{
+  padding: 0.5rem;
+  border-bottom: 1px solid 	#a4133c;
+  border-right: 2px solid 	#a4133c;
+}
+
+td{
+  font-size: 14px;
+}
+
+
+table tr td:first-child, 
+table tr th:first-child {
+  border-left: 2px solid #a4133c;
+}
+
+
+table tr th {
+  border-top: 2px solid #a4133c;
+  border-bottom: 2px solid #a4133c;
+}
+
+table tr:last-child td{
+  border-bottom: 2px solid #a4133c;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 0.5rem;
+}
+
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 0.5rem;
+}
+
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;       
+  gap: 0px;                  
+  padding: 0rem 0.6rem;
+}
+
+.filter-button, .sort-button{
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.edit-btn, .delete-btn {
+  margin-right: 0.5rem;
+}

@@ -1,0 +1,29 @@
+<div class = "main-container">
+    <div 
+  *ngIf="showForm" 
+  class="overlay" 
+  (click)="closeForm()"
+>
+  <div class="form-modal" (click)="$event.stopPropagation()">
+    <app-form (formSubmitted)="onTaskCreated()"></app-form>
+  </div>
+</div>
+    <div class = "task-list-table">
+        <div class="task-list-title">Sales Log</div>
+        <div class = "task-list-header">
+            <button class="btn primary-button" (click)="openForm()" > New Task</button>
+            <div class="searchbar"><app-search (searchChange)="onSearch($event)"></app-search></div>
+        </div>
+        <div class="filter-chips-container">
+            <app-filter-chip *ngIf="showFilterChip" [label]="filterChipLabel" (removeDateFilter)="removeDateFilter()"></app-filter-chip>
+        </div>
+        <div class= "task-list-item-container">
+            <ng-container *ngIf="isLoading; else notLoading">
+                <div class="loading-state">Loading...</div>
+            </ng-container>
+            <ng-template #notLoading>
+                <app-table [tasks] = "tasks" (selectionChange)="onFilterSelectionChange($event)" (dateRangeSelected)="onDateRangeSelected()"></app-table>
+            </ng-template>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="form-container">
+    <div class="form-title">{{ task ? 'Update Task' : 'New Task' }}</div>
+    <form class="form" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div class="form-item">
+                <label for="entityName">Entity Name <span class="required-star">*</span></label>
+                <input id="entityName" formControlName="entityName" type="text" required>
+                <div class="form-warning" *ngIf="taskForm.get('entityName')?.invalid && (taskForm.get('entityName')?.touched || taskForm.get('entityName')?.dirty)">
+                  Entity Name is required (min 3 characters).
+                </div>
+            </div>
+            <div class="form-item">
+                <label for="dueDateTime">Date and Time <span class="required-star">*</span></label>
+                <input id="dueDateTime" formControlName="dueDateTime" type="datetime-local" required>
+                <div class="form-warning" *ngIf="taskForm.get('dueDateTime')?.invalid && (taskForm.get('dueDateTime')?.touched || taskForm.get('dueDateTime')?.dirty)">
+                  Date and Time is required.
+                </div>
+            </div>
+            <div class="form-item">
+                <label for="contactPerson">Contact Person</label>
+                <input id="contactPerson" formControlName="contactPerson" type="text">
+                <div class="form-warning" *ngIf="taskForm.get('contactPerson')?.invalid && (taskForm.get('contactPerson')?.touched || taskForm.get('contactPerson')?.dirty)">
+                  Contact Person must be at least 3 characters long.
+                </div>
+            </div>
+            <div class="form-item">
+                <label for="type">Task Type <span class="required-star">*</span></label>
+                <select id="type" formControlName="type" required>
+                    <option *ngFor="let t of taskTypes" [value]="t">
+                        {{ getTaskTypeDescription(t) }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="notes">Notes</label>
+                <textarea id="notes" formControlName="notes" rows="4"></textarea>
+            </div>
+            <div class="form-item">
+                <label for="status">Status <span class="required-star">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-button" *ngFor="let s of taskStatuses">
+                        <input type="radio" formControlName="status" [value]="s"> {{ getTaskStatusDescription(s) }}
+                    </div>
+                </div>
+                <div class="form-warning" *ngIf="taskForm.get('status')?.invalid && (taskForm.get('status')?.touched || taskForm.get('status')?.dirty)">
+                  Status is required.
+                </div>
+            </div>
+
+            <div class="form-item">
+                <button type="submit" class="btn primary-button submit-btn" [disabled]="taskForm.invalid">
+                  {{ task ? 'Update the task' : 'Create a new task' }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

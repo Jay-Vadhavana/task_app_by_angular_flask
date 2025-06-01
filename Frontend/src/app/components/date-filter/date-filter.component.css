@@ -1,0 +1,7 @@
+.date-filter-popup {
+  background: #ffccd5;
+  border: 2px solid	#a4133c;
+  border-radius: 5px;
+  padding: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}

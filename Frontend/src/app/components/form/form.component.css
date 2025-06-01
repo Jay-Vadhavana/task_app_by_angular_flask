@@ -1,0 +1,42 @@
+.form-container {
+    border: 2px solid #a4133c;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #ffccd5;
+    max-width: 550px;
+    width: 350px;
+    max-height: 90vh;
+    overflow-y: auto;
+    /* box-sizing: border-box; */
+}
+
+.form-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #590d22;
+}
+
+.form-item{
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    gap: 5px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.radio-button{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.form-warning{
+    font-size: 12px;
+    color: #a4133c;
+}

@@ -1,0 +1,39 @@
+.main-container{
+    padding: 20px;
+}
+
+.task-list-table{
+    border: 2px solid #a4133c;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.task-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.searchbar{
+    width: 100%;
+    max-width: 300px;
+}
+
+.task-list-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.left .btn {
+  margin-left: 1rem;
+}
+
+.task-list-item-container{
+  overflow-x: auto;
+  width: 100%;
+}
+
+.task-list-title{
+  color: #590d22;
+}

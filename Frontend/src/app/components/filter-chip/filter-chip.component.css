@@ -1,0 +1,22 @@
+.filter-chip{
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffccd5;
+    border: 2px solid #a4133c;
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.remove-button{
+    margin-left: 0.5rem;
+}
+
+.close-icon {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

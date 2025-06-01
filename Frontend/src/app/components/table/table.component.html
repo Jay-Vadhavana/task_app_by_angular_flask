@@ -1,0 +1,82 @@
+<div class="table-wrapper">
+    <table class="table">
+        <thead class="table-header">
+            <tr class="table-row">
+                <th>
+                    <div class="column-header">
+                        <span>Date</span> <mat-icon class="filter-button" #dateFilterBtn (click)="openDateFilter(dateFilterBtn._elementRef.nativeElement)">filter_alt</mat-icon> <mat-icon class="sort-button" (click)="onSort('dueDateTime')">swap_vert</mat-icon>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        <span>Entity Name</span> <mat-icon class="filter-button" #entityNameFilterBtn (click)="openFilterMenu('entityName', entityNameFilterBtn._elementRef.nativeElement)" >filter_alt</mat-icon> <mat-icon class="sort-button"
+                        (click)="onSort('entityName')">swap_vert</mat-icon>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        Task Type <mat-icon class="filter-button" #typeFilterBtn (click)="openFilterMenu('type', typeFilterBtn._elementRef.nativeElement)">filter_alt</mat-icon> <mat-icon class="sort-button" (click) = "onSort('type')">swap_vert</mat-icon>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        Time
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        Contact Person <mat-icon class="filter-button" #contactPersonFilterBtn (click)="openFilterMenu('contactPerson', contactPersonFilterBtn._elementRef.nativeElement)">filter_alt</mat-icon> <mat-icon class="sort-button" (click)="onSort('contactPerson')">swap_vert</mat-icon>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        Notes
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        Status <mat-icon class="filter-button" #statusFilterBtn (click)="openFilterMenu('status', statusFilterBtn._elementRef.nativeElement)">filter_alt</mat-icon> <mat-icon class="sort-button" (click)="onSort('status')">swap_vert</mat-icon>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header"></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr class="table-row" *ngFor="let task of tasks" 
+                [ngStyle]="task.status === 0 ? {'background-color': '#ffccd5'} : {}">
+                <td class="row-data">{{ formatDate(task.dueDateTime) }}</td>
+                <td class="row-data">{{ task.entityName }}</td>
+                <td class="row-data">{{ getTypeDescription(task.type) }}</td>
+                <td class="row-data">{{ formatTime(task.dueDateTime) }}</td>
+                <td class="row-data">{{ task.contactPerson }}</td>
+                <td class="row-data">{{ task.notes }}</td>
+                <td class="row-data">{{ getStatusDescription(task.status) }}</td>
+                <td class="row-data">
+                    <button class="btn primary-button edit-btn" (click)="editTask(task)">Edit</button>
+                    <button class="btn secondary-button delete-btn" (click)="deleteTask(task.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<app-filtering-menu *ngIf="showFilterMenuFor"  [options]="options" [anchor]="filterMenuAnchor"
+  (closeMenu)="closeFilterMenu()" [showFilterMenuFor]="showFilterMenuFor" (selectionChange)="onFilterSelectionChange($event)"></app-filtering-menu>
+<app-date-filter *ngIf="showDateFilter" [anchor]="dateFilterAnchor" (dateRangeChange)="onDateRangeChange($event)"></app-date-filter>
+
+
+<div 
+  *ngIf="showForm" 
+  class="overlay" 
+  (click)="closeForm()"
+>
+  <div class="form-modal" (click)="$event.stopPropagation()">
+    <app-form [task]="editedTask" (formSubmitted)="onTaskUpdated()"></app-form>
+  </div>
+</div>
+
+
+<app-popup *ngIf="showDeletePopup" [message]="deletePopupMessage" (confirmAction)="onDeleteConfirmed()" (cancelAction)="onDeleteCancelled()"></app-popup>

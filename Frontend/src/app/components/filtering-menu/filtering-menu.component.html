@@ -1,0 +1,8 @@
+<div class="filtering-menu-container" [ngStyle]="menuStyle">
+    <div *ngFor="let item of options">
+        <label class="checkbox-container">
+        <input type="checkbox" [value]="item.value" [(ngModel)]="item.checked" (change)="onSelectionChange()" />
+        <span>{{ item.label }}</span>
+        </label>
+    </div>
+</div>

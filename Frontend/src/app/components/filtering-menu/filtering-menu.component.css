@@ -1,0 +1,12 @@
+.filtering-menu-container{
+    font-size: 14px;
+    padding: 10px;
+    border: 2px solid 	#a4133c;
+    border-radius: 5px;
+    background-color: #ffccd5;
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 5px;
+}

@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import "~@fortawesome/fontawesome-free/css/all.css"; */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #fff0f3;
+  color:#800f2f;
+}
+
+button{
+    font-family: "Poppins", sans-serif;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.2s;
+}
+
+.primary-button{
+    color: #fff;
+    background: linear-gradient(90deg, #c9184a 0%, #ff4d6d 100%);
+}
+
+.primary-button:hover{
+    cursor: pointer;
+    background: linear-gradient(90deg, #a4133c 0%, #ff758f 100%);
+}
+
+.secondary-button{
+    color: #590d22;
+    background: #ffb3c1 ;
+}
+
+.secondary-button:hover{
+    color: #fff;
+    background: linear-gradient(90deg, #ff758f 0%, #c9184a 100%);
+    cursor: pointer;
+}
+
+input, select, textarea{
+    padding: 5px 10px;
+    border: 2px solid #a4133c;
+    border-radius: 5px;
+    background: none;
+    font-family: "Poppins", sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.form-modal {
+  position: relative;
+  z-index: 1001;
+}

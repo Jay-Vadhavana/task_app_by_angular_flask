@@ -1,0 +1,11 @@
+<div class="date-filter-popup" [ngStyle]="dateFilterStyle">
+    <mat-form-field appearance="fill">
+      <mat-label>Select date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker" >
+        <input matStartDate placeholder="Start date" (dateChange)="onDateRangeChange($event, 'start')" />
+        <input matEndDate placeholder="End date" (dateChange)="onDateRangeChange($event, 'end')"/>
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+</div>
