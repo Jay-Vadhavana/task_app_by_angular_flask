@@ -44,7 +44,7 @@ export class FormComponent implements OnInit, OnChanges {
     return new FormGroup({
       entityName: new FormControl(task?.entityName || '', [Validators.required, Validators.minLength(3)]),
       dueDateTime: new FormControl(dueDateTimeValue, [Validators.required, Validators.minLength(10)]),
-      type: new FormControl(task?.type ?? '', Validators.required),
+      type: new FormControl(task?.type ?? TaskType.MEETING, Validators.required),
       status: new FormControl(task?.status ?? TaskStatus.OPEN, Validators.required),
       contactPerson: new FormControl(task?.contactPerson || '', [Validators.required, Validators.minLength(3)]),
       notes: new FormControl(task?.notes || '')
