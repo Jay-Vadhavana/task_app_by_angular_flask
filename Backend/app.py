@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Recommended for SQLAlchemy
-CORS(app)  # Enable CORS for all routes
+CORS(app, origins=["https://taupe-semolina-76b31f.netlify.app"])  # Enable CORS for all routes
 
 db.init_app(app)
 app.register_blueprint(api_bp)
