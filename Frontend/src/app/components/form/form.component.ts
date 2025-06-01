@@ -54,7 +54,13 @@ export class FormComponent implements OnInit, OnChanges {
   onSubmit() {
     console.log('Form submitted:', this.taskForm.value);
     if (this.taskForm.valid) {
-      this.createTask();
+      // Ensure type and status are numbers before submitting
+      const formValue = {
+        ...this.taskForm.value,
+        type: Number(this.taskForm.value.type),
+        status: Number(this.taskForm.value.status)
+      };
+      this.createTask(formValue);
     } else {
       console.error('Form is invalid');
     }
@@ -68,9 +74,9 @@ export class FormComponent implements OnInit, OnChanges {
     return this.taskStatusDescriptions[status as TaskStatus];
   }
 
-  createTask() {
+  createTask(formValue?: any) {
     if(this.task){
-      const updatedTask = { ...this.taskForm.value, id: this.task.id };
+      const updatedTask = { ...formValue, id: this.task.id };
       this.taskService.updateTask(updatedTask).subscribe({
         next: (response) => {
           this.taskForm.reset();
@@ -81,7 +87,7 @@ export class FormComponent implements OnInit, OnChanges {
         }
       });
     }else{
-      this.taskService.addTask(this.taskForm.value).subscribe({
+      this.taskService.addTask(formValue || this.taskForm.value).subscribe({
         next: (response) => {
           this.taskForm.reset();
           this.formSubmitted.emit();
