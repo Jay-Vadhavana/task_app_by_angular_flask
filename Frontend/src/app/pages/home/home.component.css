@@ -37,3 +37,10 @@
 .task-list-title{
   color: #590d22;
 }
+
+.loading-state{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

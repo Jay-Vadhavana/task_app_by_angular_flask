@@ -81,3 +81,7 @@ table tr:last-child td:last-child {
 .edit-btn, .delete-btn {
   margin-right: 0.5rem;
 }
+
+.loading-text{
+  text-align: center;
+}

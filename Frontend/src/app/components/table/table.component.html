@@ -44,6 +44,9 @@
             </tr>
         </thead>
         <tbody class="table-body">
+            <tr class="table-row" *ngIf="tasks.length === 0">
+                <td class="row-data loading-text" colspan="8">No tasks available</td>
+            </tr>
             <tr class="table-row" *ngFor="let task of tasks" 
                 [ngStyle]="task.status === 0 ? {'background-color': '#ffccd5'} : {}">
                 <td class="row-data">{{ formatDate(task.dueDateTime) }}</td>

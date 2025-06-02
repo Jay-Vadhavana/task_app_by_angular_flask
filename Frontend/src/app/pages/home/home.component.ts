@@ -29,6 +29,7 @@ export class HomeComponent {
   }
 
   fetchTasks(paramsObj?: any) {
+    this.isLoading = true;
     this.taskService.fetchTasks(paramsObj).subscribe({
       next: (response) => {
         this.tasks = response;
