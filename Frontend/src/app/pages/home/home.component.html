@@ -22,7 +22,7 @@
                 <div class="loading-state">Loading...</div>
             </ng-container>
             <ng-template #notLoading>
-                <app-table [tasks] = "tasks" (selectionChange)="onFilterSelectionChange($event)" (dateRangeSelected)="onDateRangeSelected()"></app-table>
+                <app-table [tasks] = "tasks" (selectionChange)="onFilterSelectionChange($event)" (dateRangeSelected)="onDateRangeSelected()" [activeFilters] = "activeFilters"></app-table>
             </ng-template>
         </div>
     </div>

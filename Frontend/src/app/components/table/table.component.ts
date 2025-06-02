@@ -32,7 +32,7 @@ export class TableComponent {
   showFilterMenuFor: string | null = null;
   filterMenuAnchor: HTMLElement | null = null;
   dateFilterAnchor: HTMLElement | null = null;
-  activeFilters: { [key: string]: string[] } = {};
+  @Input() activeFilters: { [key: string]: string[] } = {};
   sortColumn: string | null = null;
   sortDirection: 'asc' | 'desc' = 'asc';
   showForm = false;
@@ -80,7 +80,6 @@ export class TableComponent {
       this.closeFilterMenu();
       return;
     }
-    
     this.showFilterMenuFor = null;
 
     setTimeout(() => {
@@ -96,7 +95,7 @@ export class TableComponent {
             value: name,
             checked: selectedValues.includes(name)
           }));
-        break;
+          break;
         case 'contactPerson':
           const contactPersons = Array.from(new Set(this.tasks.map(task => task.contactPerson)));
           this.options = contactPersons.map(person => ({
@@ -104,23 +103,20 @@ export class TableComponent {
             value: person,
             checked: selectedValues.includes(person)
           }));
-        break;
+          break;
         case 'type':
-          const taskTypes = Array.from(new Set(this.tasks.map(task => task.type)));
-          this.options = taskTypes.map(type => ({
-            label: this.getTypeDescription(type),
-            value: type.toString(),
-            checked: selectedValues.includes(type.toString())
-          }));
-        break;
+          this.options = [
+            { label: this.getTypeDescription(TaskType.MEETING), value: TaskType.MEETING.toString(), checked: selectedValues.includes(TaskType.MEETING.toString()) },
+            { label: this.getTypeDescription(TaskType.VIDEO_CALL), value: TaskType.VIDEO_CALL.toString(), checked: selectedValues.includes(TaskType.VIDEO_CALL.toString()) },
+            { label: this.getTypeDescription(TaskType.CALL), value: TaskType.CALL.toString(), checked: selectedValues.includes(TaskType.CALL.toString()) }
+          ];
+          break;
         case 'status':
-          const taskStatuses = Array.from(new Set(this.tasks.map(task => task.status)));
-          this.options = taskStatuses.map(status => ({
-            label: this.getStatusDescription(status),
-            value: status.toString(),
-            checked: selectedValues.includes(status.toString())
-          }));
-        break;
+          this.options = [
+            { label: this.getStatusDescription(TaskStatus.OPEN), value: TaskStatus.OPEN.toString(), checked: selectedValues.includes(TaskStatus.OPEN.toString()) },
+            { label: this.getStatusDescription(TaskStatus.CLOSE), value: TaskStatus.CLOSE.toString(), checked: selectedValues.includes(TaskStatus.CLOSE.toString()) }
+          ];
+          break;
       }
     });
   }
